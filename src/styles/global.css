@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
 @theme {
-  /* 若葉のような、明るく透明感のある緑 (新緑色) */
-  --color-wakaba: #f0fdf4; /* 非常に薄い緑 (Tailwindのgreen-50に近い) */
-  --color-wakaba-shine: #dcfce7; /* 少し日差しを感じる明るい緑 (green-100) */
+  /* 山手線の色をベースに、光が透けたような「薄いウグイス色」 */
+  --color-wakaba: #f1f8e9;       /* 非常に薄い黄緑 (JRグリーンのエッセンス) */
+  --color-wakaba-shine: #dcedc8; /* 少し彩度を上げた、日差しが当たる葉の色 */
 }
