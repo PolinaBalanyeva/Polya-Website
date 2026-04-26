@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+const allWorks = await getCollection('works');
+---
+
+<Layout title="Polya's Archive">
+	<main class="max-w-3xl mx-auto px-6 py-20 font-sans">
+		<header class="mb-20">
+			<h1 class="text-3xl font-light tracking-tight text-success-content/80">Polya's Archive</h1>
+			<p class="mt-4 text-base-content/60 font-serif italic text-lg">Mathematics, thoughts, and fragments.</p>
+		</header>
+
+		<section class="space-y-16">
+			{allWorks.map(work => (
+			<article class="relative group border-l-2 border-success/10 pl-8 hover:border-success/40 transition-colors">
+				<div
+					class="card bg-white/60 backdrop-blur-md shadow-sm border border-success/10 hover:shadow-md transition-all">
+					<div class="card-body">
+					</div>
+				</div>
+
+				<h2 class="text-xl font-medium text-base-content/90 mb-3 group-hover:text-success transition-colors">
+					{work.data.title}
+				</h2>
+
+				<p class="text-base-content/70 leading-relaxed text-sm mb-4">
+					{work.data.description}
+				</p>
+
+				<div class="flex gap-6 items-center">
+					{work.data.pdfUrl && (
+					<a href={work.data.pdfUrl}
+						class="text-sm flex items-center gap-2 text-success hover:underline decoration-1 underline-offset-8">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+							<polyline points="14 2 14 8 20 8" />
+						</svg>
+						PDF Manuscript
+					</a>
+					)}
+				</div>
+			</article>
+			))}
+		</section>
+
+		<footer class="mt-32 pt-8 border-t border-base-300 text-xs text-base-content/40 font-mono">
+			© 2026 Polya - Built with Astro
+		</footer>
+	</main>
+</Layout>
